@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class EnemiesContainer : MonoBehaviour
 {
     [SerializeField] private List<Enemy> _enemies;
-    private event UnityAction EnemiesEnded;
+    public event UnityAction EnemiesEnded;
 
     private void OnEnable()
     {
