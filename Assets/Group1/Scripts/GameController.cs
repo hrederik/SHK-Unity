@@ -15,16 +15,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        foreach (var b in B)
-        {
-            if (b == null)
-                continue;
-
-            if (Vector3.Distance(a.transform.position, b.transform.position) < 0.2f)
-            {
-                a.SendMessage("SendMEssage", b);
-            }
-        }
     }
 
     public void End()
