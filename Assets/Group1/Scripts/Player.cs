@@ -1,24 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class NewBehaviourScript1 : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public float spEed;
     public bool timer;
     public float time;
-    // Use this for initialization
-
-
-    void Start()
+    
+    private void Update()
     {
-    }
-    // Update is called once per frame
-    void Update(){
         if (timer)
         {
             time -= Time.deltaTime;
+
             if(time < 0)
-   {
+            {
                 timer = false;
                 spEed /= 2;
             }
@@ -47,19 +42,15 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     public void SendMEssage(GameObject b)
     {
-
-
-        if(b.name == "enemy")
+        if(b.name == "Enemy")
         {
             Destroy(b);
-        }if(b.name == "speed")
+        }
+        else if (b.name == "speed")
         {
             spEed *= 2;
             timer = true;
             time = 2;
-
-
-
         }
     }
 }
