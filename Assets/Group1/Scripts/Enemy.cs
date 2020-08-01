@@ -2,18 +2,27 @@
 
 public class Enemy : MonoBehaviour
 {
-    private Vector3 Target;
+    [SerializeField] private float _availableAreaRadius = 4.0f;
+    [SerializeField] private float _speed = 2.0f;
+    private Transform _transform;
+    private Vector3 _target;
 
     private void Start()
     {
-        Target = Random.insideUnitCircle * 4;
+        _transform = transform;
+        _target = Random.insideUnitCircle * _availableAreaRadius;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Target, 2 * Time.deltaTime);
+        _transform.position = Vector3.MoveTowards(_transform.position, _target, _speed * Time.deltaTime);
         
-        if (transform.position == Target)
-            Target = Random.insideUnitCircle * 4;
+        if (_transform.position == _target)
+            _target = Random.insideUnitCircle * _availableAreaRadius;
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
     }
 }
