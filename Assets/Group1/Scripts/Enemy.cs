@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed = 2.0f;
     private Transform _transform;
     private Vector3 _target;
+
+    public event UnityAction<Enemy> Killed;
 
     private void Start()
     {
@@ -23,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     public void Kill()
     {
+        Killed?.Invoke(this);
         Destroy(gameObject);
     }
 }
