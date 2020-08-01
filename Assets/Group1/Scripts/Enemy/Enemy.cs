@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
             _target = Random.insideUnitCircle * _availableAreaRadius;
     }
 
-    public void Kill()
+    public void OnKilled()
     {
         Killed?.Invoke(this);
         Destroy(gameObject);
